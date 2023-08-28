@@ -1,0 +1,8 @@
+<ul class="heroes">
+    <li *ngFor="let cancion of canciones">
+      <button [class.selected]="cancion.id === 2" type="button" >
+        <span class="badge">{{cancion.id}}</span>
+        <span class="name">{{cancion.nombre}}</span>
+      </button>
+    </li>
+</ul>
