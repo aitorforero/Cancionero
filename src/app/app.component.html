@@ -1,5 +1,7 @@
 
 <app-cabecera [title]="title"></app-cabecera>
 
-<app-canciones></app-canciones>
+<app-canciones (cancionSeleccionadaEvent)="onCancionSeleccionadaEvent($event)"></app-canciones>
+<app-cancion (cancion)="cancionSeleccionada"></app-cancion>
+
 

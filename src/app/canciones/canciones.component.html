@@ -1,15 +1,15 @@
 
-<table mat-table [dataSource]="canciones">
+<table mat-table [dataSource]="canciones" matSort (matSortChange)="announceSortChange($event)">
     <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> id </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> id </th>
         <td mat-cell *matCellDef="let cancion">{{cancion.id}} </td>
     </ng-container>
-    <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <ng-container matColumnDef="titulo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </th>
         <td mat-cell *matCellDef="let cancion">{{cancion.titulo}}</td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let cancion; columns: columnsToDisplay" (click)="setCancionSeleccionada(cancion)"  [class.mat-elevation-z8]="cancion === cancionSeleccionada"></tr>
 </table>
 
 
