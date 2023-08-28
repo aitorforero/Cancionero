@@ -1,8 +1,16 @@
-<ul class="heroes">
-    <li *ngFor="let cancion of canciones">
-      <button [class.selected]="cancion.id === 2" type="button" >
-        <span class="badge">{{cancion.id}}</span>
-        <span class="name">{{cancion.nombre}}</span>
-      </button>
-    </li>
-</ul>
+
+<table mat-table [dataSource]="canciones">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> id </th>
+        <td mat-cell *matCellDef="let cancion">{{cancion.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let cancion">{{cancion.titulo}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+</table>
+
+
+

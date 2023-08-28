@@ -1,4 +1,4 @@
 export interface Cancion {
     id: number;
-    nombre: string;
+    titulo: string;
   }

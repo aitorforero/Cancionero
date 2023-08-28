@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { CANCIONES } from '../mock-canciones'; 
 
 @Component({
@@ -7,5 +8,6 @@ import { CANCIONES } from '../mock-canciones';
   styleUrls: ['./canciones.component.sass']
 })
 export class CancionesComponent {
+  columnsToDisplay = ['id', 'nombre'];
   canciones = CANCIONES;
 }
