@@ -1,10 +1,11 @@
-import {LiveAnnouncer} from '@angular/cdk/a11y';
-import {AfterViewInit, Component, EventEmitter, Output, ViewChild} from '@angular/core';
+import {LiveAnnouncer } from '@angular/cdk/a11y';
+import {Component, ViewChild} from '@angular/core';
 import {MatSort, Sort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 
 import { CANCIONES } from '../mock-canciones';
 import { Cancion } from '../cancion';
+import { CancionSeleccionadaService } from '../cancionSeleccionada.service';
 
 @Component({
     selector: 'app-canciones',
@@ -13,15 +14,15 @@ import { Cancion } from '../cancion';
     standalone: true,
     imports: [MatTableModule, MatSortModule]
 })
-export class CancionesComponent implements AfterViewInit  {
-  @Output() cancionSeleccionadaEvent = new EventEmitter<Cancion>();
-  cancionSeleccionada?: Cancion;
+export class CancionesComponent  {
 
   columnsToDisplay = ['id', 'titulo'];
-
   canciones = new MatTableDataSource(CANCIONES);
+  cancionSeleccionada? : Cancion;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer) {}
+  constructor(
+    private _liveAnnouncer: LiveAnnouncer,
+    private _cancionSeleccionadaService: CancionSeleccionadaService) {}
 
   @ViewChild(MatSort) sort: MatSort = new MatSort();
 
@@ -40,6 +41,6 @@ export class CancionesComponent implements AfterViewInit  {
 
   setCancionSeleccionada(value?: Cancion) {
     this.cancionSeleccionada = value;
-    this.cancionSeleccionadaEvent.emit(value);
+    this._cancionSeleccionadaService.seleccionaCancion(value);
   }
 }

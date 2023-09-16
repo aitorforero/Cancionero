@@ -10,4 +10,5 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 })
 export class CabeceraComponent {
   @Input() title = ""
+  @Input() tituloCancion = ""
 }
